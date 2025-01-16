@@ -665,6 +665,7 @@ padding-right: 40px;
     display: flex;
     font-family: "Orbitron", sans-serif;
     font-size: var(--fontsize-tittle-small);
+    color: var(--secondary-color);
     text-transform: none;
     font-weight: 400;
     width: 100%;
