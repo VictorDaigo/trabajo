@@ -33,8 +33,8 @@ svg{
   --secondary-color: #F6F6F6;
   --main-bg-color: #121212;
   --fontsize-tittle-big: clamp(4rem,  7.38vw, 6rem);
-  --fontsize-tittle-medium: clamp(2rem,  4vw, 3rem);
-  --fontsize-tittle-small: clamp(1rem,  2.5vw, 1.5rem);
+  --fontsize-tittle-medium: clamp(1.5rem,  4vw, 3rem);
+  --fontsize-tittle-small: clamp(0.9rem,  2.5vw, 1.5rem);
   --fontsize-p: 1rem;
 
 }
@@ -150,7 +150,6 @@ background-color: var(--secondary-color);
 
 
 .Hero-cuadro{
-  width: 500px;
   background-color: rgba(0, 0, 255, 0);
   position: absolute;
   border: 1px solid #FFD700;
@@ -845,6 +844,19 @@ padding-right: 40px;
     justify-content: start;
     gap: 16px;
   }
+  .Gallery-img--Tercera{
+    width: 100%;
+  }
+  .Gallery-img--Primera{
+    width: 100%;
+  
+    
+  }
+  .Gallery-img--Segunda{
+    width:100%;
+  
+  }
+
  
 }
 .Contact{
