@@ -190,6 +190,7 @@ background-color: var(--secondary-color);
   color: var(--secondary-color);
   text-transform: uppercase;
   padding-top: 100px;
+  width: 100%;
 }
 .Hero-cuadro-span--none{
   display: none;
@@ -708,7 +709,7 @@ padding-right: 40px;
 }
 .Gallery-li{
   width: 100%;
-  min-height: 100vh;
+  min-height: 600px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: start;
