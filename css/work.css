@@ -147,7 +147,8 @@ background-color: var(--secondary-color);
   height: 100vh;
   top: 0;
   left: 0;
-  transition: transform 3s ease ;
+  transition: transform 3s ease;
+  overflow: hidden;
 
 }
 
@@ -336,6 +337,7 @@ position: absolute;
   font-family: "Orbitron", sans-serif;
   font-size: var(--fontsize-tittle-medium);
   color: var(--main-color);
+  transition: transform .6s ease, opacity .6s ease;
 }
 
 .Wordpress-imgWrapper{
@@ -354,15 +356,21 @@ position: absolute;
 .Wordpress-img:nth-child(1){
   top: 0;
   left: 0;
+  transition: transform .6s ease, opacity .6s ease;
+
 }
 .Wordpress-img:nth-child(2){
   width: 200px;
 bottom: 0;
 right: calc(50% - 100px);
+transition: transform 1s ease, opacity 1s ease;
+
 }
 .Wordpress-img:nth-child(3){
   bottom: 0;
   right: 0;
+  transition: transform 1,4s ease, opacity 1.4s ease;
+
 }
 
 
@@ -374,11 +382,15 @@ right: calc(50% - 100px);
   font-size: var(--fontsize-tittle-small);
   color: var(--secondary-color);
   font-weight: 400;
+  transition: transform 1s ease, opacity 1s ease;
+
 
 }
 .Wordpress-svgWrapper{
   grid-row: 2 / 3;
   grid-column: 1 / 2 ;
+  transition: transform .6s ease, opacity .6s ease;
+
 }
 .Wordpress-svgWrapper svg{
   width: 200px;
@@ -459,6 +471,14 @@ right: calc(50% - 100px);
     grid-template-columns: repeat(1, 1fr);
 
   }
+}
+.Observer{
+  transform: translateY(200px);
+  opacity: 0;
+}
+.elementoIsVisible{
+  opacity: 1;
+  transform: translateY(0);
 }
 .Photoshop{
   width: 100%;

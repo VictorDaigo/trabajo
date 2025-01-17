@@ -63,6 +63,24 @@ window.addEventListener('wheel', (e)=>{
 
   }
 } )
+
+const Observar = document.querySelectorAll(`.Observer`)
+
+let options = {
+  threshold : 0.5
+}
+let observer = new IntersectionObserver((entries)=>{
+  entries.forEach((entry)=>{
+    let { isIntersecting , target } = entry
+    if( isIntersecting){
+      target.classList.add('elementoIsVisible')
+    }
+  })
+} , options)
+Observar.forEach(( _ , i )=>{
+  observer.observe(Observar[i])
+})
+
 const PhotoGallery = document.querySelector(`.PhotoGallery`)
 const PhotoGalleryLi = document.querySelectorAll(`.PhotoGallery-li`)
 const FlechaIzquierda = document.querySelector(`.Flecha--izquierda`)

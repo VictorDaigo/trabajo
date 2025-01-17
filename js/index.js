@@ -175,6 +175,28 @@ GalleryLi.forEach(( _ , i )=>{
 // GalleryAbutton.forEach(( _ , i )=>{
 //   Buttonobserver.observe(GalleryAbutton[i])
 // })
+const GalleryImg = document.querySelectorAll(`.Gallery-img`)
+
+GalleryImg.forEach(( _ , i )=>{
+  GalleryImg[i].addEventListener('mouseenter', ()=>{
+    GalleryImg.forEach(( _ , i )=>{
+      GalleryImg[i].style.filter = `brightness(40%)`
+    })
+    GalleryImg[i].classList.add('GalleryImgIsActive')
+    GalleryImg[i].style.filter = `brightness(100%)`
+
+  })
+
+})
+GalleryImg.forEach(( _ , i )=>{
+  GalleryImg[i].addEventListener('mouseleave', ()=>{
+    GalleryImg.forEach(( _ , i )=>{
+      GalleryImg[i].style.filter = `brightness(100%)`
+  })
+  GalleryImg[i].classList.remove('GalleryImgIsActive')
+})
+})
+
 
 const Button = document.querySelectorAll(`.Button`);
 
