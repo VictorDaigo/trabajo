@@ -163,7 +163,7 @@ GalleryImg.forEach((img, i) => {
 
 const Button = document.querySelectorAll('.Button');
 // En este caso tuve ciertos problemas con forEach, ya que hay varios botones, y cada boton tenia 2 span a los que se aplicaba una clase.
-// Tuve que pedir ayuda a Chatgpt para la Selección secundaria.
+// Tuve que pedir ayuda a Chatgpt para la selección secundaria.
 // Otro aspecto en el que chatgpt me ha ayudado ha sido para quitar paréntesis y llaves, deconstruir los parámetros, o utilizar funciones Handler, es decir, crear funciones nombradas para separar el listener de la funcion.
  
 const botonMouseEnter = (button, buttonBackground, buttonSpans) => {
