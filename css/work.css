@@ -415,7 +415,7 @@ transition: transform 1s ease, opacity 1s ease;
 .Wordpress-img:nth-child(3){
   bottom: 0;
   right: 0;
-  transition: transform 1,4s ease, opacity 1.4s ease;
+  transition: transform 1.4s ease, opacity 1.4s ease;
 
 }
 
