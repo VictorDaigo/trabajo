@@ -1,3 +1,24 @@
+/* index.css
+-Reset
+-Variables
+-Header
+-Title
+-Muestra
+-WorkIntro
+-Works
+-WordPress
+-Code
+-CodeGrid
+-Photoshop
+-PhotoGallery
+-Flecha
+-Button
+-Contact
+-Footer
+-Info
+ */
+
+
 /* Reset / Normmalizador */
 *{
   margin:0;
@@ -58,13 +79,10 @@ h1 , h2 , h3 , h4 , h5 , h6{
   z-index: 3;
   overflow: hidden;
   transition: height .5s ease;
-
-
-
   gap: 16px;
 }
 .HeaderIsVisible{
-  height: auto;
+  height: auto; /*Cuando se añade se adapta a la altura del header, el cual está a 60px */
 }
 
 .Header-top{
@@ -77,18 +95,22 @@ h1 , h2 , h3 , h4 , h5 , h6{
 }
 .Header-top-h1{
   width: 100%;
-}
-.Header-top-span--none{
-  display: none;
-}
-.Header-top-svg-wrapper{
+  position: relative;
+  overflow: hidden;
   width: 60px;
   height: 60px;
   background-color: var(--main-bg-color);
   border-radius: 60px;
 }
-.Header-top-svg-wrapper svg{
-  padding-left: 6px;
+.Header-top-span--none{
+  position: absolute; /* Como no quiero que se vea, pero tampoco quiero que sea display: none, he utilizado este metodo. */
+  left: 999px;
+  opacity: 0;
+  
+}
+
+.Header-top-svg{
+  padding-left: 6px; /* Como no se centraba completamente en el contenedor, se añadió un padding.*/
   padding-top: 5px;
 }
 .Header-bottom{
@@ -126,15 +148,14 @@ background-color: var(--secondary-color);
   color: var(--main-bg-color);
 }
 .Header-bottom-a:hover{
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0); /* Al hacer hover el fondo se vuelve transparente */
   color: var(--secondary-color);
 }
 .headerIsActive{
-  transform: translateX(0);
+  transform: translateX(0); /* El Header se muestra por completo  */
 
 }
-
-.MainIsFixed{
+.MainIsFixed{ /* Se utiliza para fijar el Main durante los efectos de Javascript */
   position: fixed;
   top: 0;
   left: 0;
@@ -142,7 +163,12 @@ background-color: var(--secondary-color);
   height: 100vh;
   overflow: hidden;
 }
-.Title{
+/* Descripción: Estilo del Title
+Estructura: 
+- Title-h2
+- Muestra
+*/
+.Title{ 
   width: 100%;
   height: 100vh;
   top: 0;
@@ -162,7 +188,7 @@ background-color: var(--secondary-color);
   align-items: center;
   position: relative;
 }
-.Title-h2{
+.Title-h2{ /* Es el contenedor de las palabras. Estará en posicion absouta para mayor control */
   font-family: "Orbitron", sans-serif;
   font-size: 96px;
   font-weight: 700;
@@ -173,36 +199,13 @@ background-color: var(--secondary-color);
   left: 0;
 }
 
-.WorkIntro{
-width: 100%;
-display: flex;
-flex-flow: row nowrap;
-justify-content: center;
-align-items: center;
-padding: 48px 0;
-margin-top: 6rem;
-}
-.WorkIntro-pWrapper{
-  width: 70%;
-  max-width: 50rem;
-  border: .0625rem solid var(--main-color);
-  padding: 48px;
-  border-radius: 16px;
-}
-.WorkIntro-p{
-  font-family: "Lato", sans-serif;
-  
-  font-size: var(--fontsize-tittle-small);
-  color: var(--secondary-color);
-  font-weight: 400;
-  padding: 16px 0;
-}
-.Title-h2-span{
+
+.Title-h2-span{ /* Para poder colocarlas de forma correcta, se le aplica un width, height, y posicion absoluta.  */
   width: 525px;
   height: 128px;
 position: absolute;
 }
-.Title-h2-span--primero{
+.Title-h2-span--primero{ /* Iremos colocando cada span de forma individual*/
   top: 0;
   right: calc(50% - (525px / 2));
   transition: top .8s ease;
@@ -235,16 +238,16 @@ position: absolute;
   top: 40vh;
   right: calc(50% - (525px / 2));
 }
-.Title-h2-span--front{
+.Title-h2-span--front{ /* Queremos que estos estén al frente, y que tengan un fondo transparente y mantengan el borde del texto, ya que las imagenes de Muestra pasaran detras suya */
   color: transparent; 
     -webkit-text-stroke: .0625rem var(--secondary-color); 
     z-index: 2;
 }
-.Title-h2-span--behind{
+.Title-h2-span--behind{ /* Estas se quedaran detras, para asegurarse de que las imagenes de Muestra pasen por delante suya, se les pone un Index 0 */
   color: var(--secondary-color);
   z-index: 0;
 }
-.MuestraWrapper{
+.MuestraWrapper{ /* Funciona como un contenedor de slider */
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -253,7 +256,7 @@ position: absolute;
   overflow: hidden;
 
 }
-.Muestra{
+.Muestra{ /* Es el slider. Se ira moviendo al hacer scroll */
   width: 300%;
   min-height: 100vh;
   display: flex;
@@ -270,7 +273,7 @@ position: absolute;
   justify-content: center;
   
 }
-.Muestra-li:nth-child(1){
+.Muestra-li:nth-child(1){ /* Posicionaremos los elementos internos en distintos align-items */
   align-items: start;
 }
 .Muestra-li:nth-child(2){
@@ -284,8 +287,8 @@ position: absolute;
   height: inherit;
 
 }
-@media (max-width: 1000px){
-  .Title-h2{
+@media (max-width: 1000px){ /* Debido a la naturaleza del efecto en javascript, nos limitaremos a dejarlo lo mas simple posible para pantallas pequeñas */
+  .Title-h2{ /* Reducimos el tamaño de las letras */
     font-size: 5rem;
     display: flex;
     flex-flow: row nowrap;
@@ -293,24 +296,67 @@ position: absolute;
     align-items: center;
   }
   
-  .Title-h2-span{
+  .Title-h2-span{/* Quitamos Posicion absolute, ya no nos interesa, ya que solo mostraremos un span  */
 
   display: none;
   position: static;
   }
-  .Title-h2-span--behind.Title-h2-span--primero{
+  .Title-h2-span--behind.Title-h2-span--primero{ /* Mostramos uno */
     display: flex;
   }
 
- .MuestraWrapper{
-  display: none;
+ .MuestraWrapper{/* Quitamos el slider, ya que depende del scroll*/
+  display: none; 
  }
 }
 @media (max-width: 600px){
-  .Title-h2{
+  .Title-h2{/* Reducimos las letras aun más para ajustar a la pantalla */
     font-size: 4rem;}
 
 }
+/* Descripción: Estilo del WorkIntro.
+Estructura: 
+- WorkIntro-p
+*/
+.WorkIntro{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 0;
+  margin-top: 6rem;
+  }
+  .WorkIntro-pWrapper{
+    width: 70%;
+    max-width: 50rem;
+    border: .0625rem solid var(--main-color);
+    padding: 48px;
+    border-radius: 16px;
+  }
+  .WorkIntro-p{
+    font-family: "Lato", sans-serif;
+    
+    font-size: var(--fontsize-tittle-small);
+    color: var(--secondary-color);
+    font-weight: 400;
+    padding: 16px 0;
+  }
+  @media (max-width: 1000px){ /* Ajustamos a pantallas pequeñas */
+    .WorkIntro{
+      padding: 0;
+    }
+    .WorkIntro-pWrapper{
+      padding: 1rem;
+
+    }
+  }
+  /* Descripción: Estilo del Works.
+Estructura: 
+- WordPress
+- Code
+- Photoshop
+*/
 .Works{
   width: 100%;
   min-height: 800px;
@@ -324,7 +370,7 @@ position: absolute;
   justify-content: center;
 
 }
-.WordPress{
+.WordPress{ /* Aunque es solo una pagina de Wordpress, utilizaremos grid para dar un estilo mas interesante */
   width: 100%;
   max-width: 1100px;
   display: grid;
@@ -340,14 +386,14 @@ position: absolute;
   transition: transform .6s ease, opacity .6s ease;
 }
 
-.Wordpress-imgWrapper{
+.Wordpress-imgWrapper{ /* Posicionamos cada elemnto del Grid según convenga con grid-row y grid-column */
   grid-row: 2 / 3;
   grid-column: 2 / 5 ;
   min-height: 400px;
   position: relative;
 
 }
-.Wordpress-img{
+.Wordpress-img{ /* Colocaremos las imagenes en posicion absoluta de forma individual*/
   width: 400px;
   height: inherit;
   position: absolute;
@@ -386,7 +432,7 @@ transition: transform 1s ease, opacity 1s ease;
 
 
 }
-.Wordpress-svgWrapper{
+.Wordpress-svgWrapper{ 
   grid-row: 2 / 3;
   grid-column: 1 / 2 ;
   transition: transform .6s ease, opacity .6s ease;
@@ -395,7 +441,7 @@ transition: transform 1s ease, opacity 1s ease;
 .Wordpress-svgWrapper svg{
   width: 200px;
 }
-@media (max-width: 1000px){
+@media (max-width: 1000px){ /* no necesitamos que este en grid, lo cambiamos a flex column*/
   .WordPress{
     display: flex;
     flex-flow: column nowrap;
@@ -411,7 +457,7 @@ transition: transform 1s ease, opacity 1s ease;
     align-items: center;
     justify-content: center;
   }
-  .Wordpress-img{
+  .Wordpress-img{ /* Queremos las tres imagenes en horizontal, todavia caben */
     position: static;
     width: calc(100% / 3);
     height: inherit;
@@ -424,9 +470,10 @@ transition: transform 1s ease, opacity 1s ease;
     
   }
   .Wordpress-img{
-    width: 100%;
+    width: 100%; /* Aqui ya no, mejor que ocupen todo el ancho del contenedor*/
   }
 }
+
 .Code{
   width: 100%;
   max-width: 1100px;
@@ -442,8 +489,17 @@ transition: transform 1s ease, opacity 1s ease;
   font-family: "Orbitron", sans-serif;
   font-size: var(--fontsize-tittle-medium);
   color: var(--main-color);
+  padding-bottom: 2rem;
+  font-weight: 400;
 }
-.CodeGrid{
+.Code-span{
+  font-family: "Lato", sans-serif;
+  font-size: var(--fontsize-tittle-small);
+  color: var(--secondary-color);
+  padding-bottom: 2rem;
+  font-weight: 400;
+}
+.CodeGrid{ /* Como son 4 webs, he decidido utilizar display grid con 2 columnas*/
   width: 100%;
   min-height: 600px;
   display: grid;
@@ -451,56 +507,64 @@ transition: transform 1s ease, opacity 1s ease;
   gap: 1rem;
 
 }
+.CodeGrid-item{ 
+  transition: transform .6s ease, opacity .6s ease;
+
+}
+.CodeGrid-a{
+  width: 100%;
+}
 .CodeGrid-h4{
   font-family: "Orbitron", sans-serif;
   font-size: var(--fontsize-tittle-small);
   color: var(--secondary-color);
   font-weight: 400;
+  padding-bottom: 1rem;
 }
 .CodeGrid-imgWrapper{
   width: 100%;
-  
-  background-color: blue;
 }
-.CodeGrid-img{
+.CodeGrid-img{ /* Por preferencia estética he decidido darle una altura establecida */
   width: 100%;
-  min-height: 200px;
+ height: 300px; 
+
 }
-@media (max-width: 600px){
+@media (max-width: 600px){ /* 1 columna para el caso de moviles */
   .CodeGrid{
     grid-template-columns: repeat(1, 1fr);
 
   }
 }
-.Observer{
+.Observer{ /* Simple clase creada para dar un efecto en javascript */
   transform: translateY(200px);
   opacity: 0;
 }
-.elementoIsVisible{
+.elementoIsVisible{ /* Lo mismo */
   opacity: 1;
   transform: translateY(0);
 }
-.Photoshop{
+.Photoshop{ 
   width: 100%;
   max-width: 1100px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: start;
   align-items: center;
-padding: 3rem 1rem;
+  padding: 3rem 1rem;
 }
 .Photoshop-h3{
   font-family: "Orbitron", sans-serif;
   font-size: var(--fontsize-tittle-medium);
   color: var(--main-color);
+  padding-bottom: 2rem;
 }
-.PhotoGalleryWrapper{
+.PhotoGalleryWrapper{ /* Contenedor de la galeria*/
   width: 100%;
   min-height: 500px;
   position: relative;
   overflow: hidden;
 }
-.PhotoGallery{
+.PhotoGallery{ /* Slider, mismo estilo que los anteriores. */
   width: 300%;
   display: flex;
   flex-flow: row nowrap;
@@ -529,7 +593,7 @@ padding: 3rem 1rem;
   box-shadow: 0rem 0rem 0.3rem 0.1rem var(--main-color);
 }
 
-.Flecha{
+.Flecha{ /* Estilo de las flechas que controlan la galeria */
   width: 4rem;
   height: 4rem;
   background-color: var(--main-color);
@@ -551,7 +615,7 @@ padding: 3rem 1rem;
   right: 0;
 }
 
-.Button{
+.Button{ /* Aqui se establece el estilo del enlace*/
   width: 350px;
   height:200px;
   display: flex;
@@ -561,7 +625,7 @@ padding: 3rem 1rem;
   position: relative;
   overflow: hidden;
   border: 1px solid var(--main-color);
-  background: repeating-linear-gradient(
+  background: repeating-linear-gradient(/* Para poder destacar más el enlace, se le da un patrón con líneas blancas */
   45deg,
   #F6F6F6,
   #121212 5px,
@@ -569,7 +633,7 @@ padding: 3rem 1rem;
   #121212 60px
 );
 }
-.Button-background{
+.Button-background{/* Este es el fondo que aparecerá al hacer hover con Javascript */
   width: 350px;
   height: 200px;
   background-color: var(--main-color);
@@ -585,7 +649,7 @@ padding: 3rem 1rem;
 
 }
 
-.Button-div{
+.Button-div{/* Es el contenedor de los span. Actua com limitador, mostrando solo uno de los span */
   width: 100%;
   height: 1.9rem;
   display: flex;
@@ -596,7 +660,7 @@ padding: 3rem 1rem;
  
 
 }
-.Button-span{
+.Button-span{/* Es el contenido, al activarse la funcion en javascript, se mueven hacia arriva */
   width: 100%;
   height: 50px;
   text-align: center;
@@ -609,9 +673,18 @@ padding: 3rem 1rem;
 .buttonSpanIsActive{
   transform: translateY(0);
 }
-.Button-span:nth-child(2){
+.Button-span:nth-child(2){/* Es el que se muestra al activarse la funcion */
   color: var(--secondary-color);
 }
+
+
+/* Descripción: Estilo del Contact.
+Estructura: 
+- Contact-h3
+- Contact-p
+- Contact-cuadro
+*/
+
 .Contact{
   padding: 3rem 1rem;
   width: 100%;
@@ -636,7 +709,7 @@ padding: 3rem 1rem;
   max-width: 1000px;
   text-align: center;
 }
-.Contact-cuadros-wrapper{
+.Contact-cuadros-wrapper{ /* Container de los cuadros */
   width: 100%;
   min-height: 800px;
   position: relative;
@@ -644,16 +717,16 @@ padding: 3rem 1rem;
   overflow: hidden;
 
 }
-.Contact-cuadro{
+.Contact-cuadro{ /* De la misma manera que los cuadros del Hero, se les da posicion absolute y se posicionan individualmente. 
+  Se les podría haber dado las mismas clases que las del Hero, y así evitar repetirlo, pero como entonces sería afectado por las funciones de Javascript, y quería usar otras transition en css, decidí no hacerlo por falta de tiempo.  */
 
   position: absolute;
   border: 1px solid var(--secondary-color);
-  
 
 }
-.contactCuadroIsActive{
+.contactCuadroIsActive{/* Al añadirse a los cuadros, se hacen grandesy cambian de color*/
   transform: scale(2);
-  border: 1px solid var(--main-color);
+  border: 1px solid var(--main-color); 
 
 }
 .Contact-cuadro--Primero{
@@ -790,7 +863,7 @@ padding: 3rem 1rem;
   left: calc(50% - (920px / 2));
 
 }
-@media (max-width: 1000px){
+@media (max-width: 1000px){ /* Quitamos los cuadros salvo el primero. */
   .Contact-cuadro{display: none;}
   .Contact-cuadro--Primero{
     display: flex;
@@ -799,7 +872,15 @@ padding: 3rem 1rem;
     min-height: 250px;
   }
 }
-.Footer{
+
+/* Descripción: Estilo del Footer.
+Estructura: 
+- Footer-main-wrapper
+- Info
+- Footer-nav
+- Footer-rights
+*/
+.Footer{ /* Un simple Footer*/
   max-width: 1300px;
   margin: auto;
 
@@ -867,7 +948,7 @@ padding: 3rem 1rem;
   color: var(--secondary-color);
 
 }
-@media (max-width: 1000px){
+@media (max-width: 1000px){ /* Quitamos el ul con los enlaces y hacemos que el Info ocupe el 100% del contenedor */
   .Footer-nav{
     display: none;
   }
@@ -875,4 +956,5 @@ padding: 3rem 1rem;
     width: 100%;
   }
 }
+
 

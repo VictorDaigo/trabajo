@@ -7,13 +7,24 @@ const HeaderTop = Header.querySelector(`.Header-top`)
 const HeaderBottom = Header.querySelector(`.Header-bottom`)
 const HeaderTopSvgWrapper=Header.querySelector(`.Header-top-h1`)
 const HeaderBottomUl = Header.querySelector(`.Header-bottom-ul`)
-HeaderTop.addEventListener('click', ()=>{
+//Cuando se hace click en la parte del header visible, se añaden las clases HeaderIsVisible y headerIsActive, los cuales hacen que el header por completo sea visible.
+HeaderTop.addEventListener('click', ()=>{ 
   Header.classList.toggle('HeaderIsVisible')
   HeaderBottom.classList.toggle('headerIsActive')
   HeaderTop.classList.toggle('headerIsActive')
 
 })
- 
+// Al hacer scroll hacia abajo, es decir, deltaY > 0 se suma el contador, el cual se utilizara para diferentes efectos de distintos elementos
+// Primero, en cuanto deltaY > 0, el cuadroPrimero se transforma, cmbiando el tamaño, y su posicion pasa a ser absolute. 
+// Tambien se cambia todo el contenido dentro del cuadroPrimero, es decir, el innerHTML, cambiandose por el logo.
+// Otro cambio que se hace necesario es el cambio del color del Header. Se modificar-a tanto el fondo del container del svg y del nav, como el svg en sí de la parte visible.
+// Para poder regresar mas tarde el contenido original, necesitaremos declarar el innerHTML origianl.
+// Al momento de hacer scroll, tambien se activará una funcion, que hace que los cuadros sigan al movimiento del ratón, efecto visto en clase.
+// El problema que tuve fue al intentar limitar dicha funcion sólo cuando se pasa el raton por encima de los cuadros. Para ello tuvo que hacer uso de chatgpt.
+// La respuesta de chatgpt fue la siguiente: Si se produce un mouseenter en el cuadro, isHoveringOverCuadro será true, y al salir sera false. En el caso de que sea false. Si isHoveringOverCuadro es false, la funcion handleMouseMove se detendra.
+// Cuando  deltaY < 0, esScrolear--. Si esScrolear vuelve a 0, queremos que todo vuelva a su estado original. 
+// Si se hace click a los cuadros, tambien se volverá al estado original. Debido a problemas a la hora de intentar optimizar, no he sido capaz de optimizar esta parte.
+// Otro elemento que es afectado por esScrolear es el Carrusel giratorio, cuya rotacion dependerá de esScrolear.
 let esScrolear = 0;
 
 let isHoveringOverCuadro = false;
@@ -84,8 +95,8 @@ window.addEventListener('wheel', (e) => {
   }
   Carrusel.style.transform = `rotate(${10 * esScrolear}deg)`;
 });
-
-cuadros.forEach((_, i) => {
+// Reseteo tras hacer click
+cuadros.forEach((_, i) => { 
   cuadros[i].addEventListener('click', () => {
     cuadros.forEach(cuadro => cuadro.style.transform = 'translate(0, 0)');
     cuadroPrimero.style.width = `100%`;
@@ -98,11 +109,11 @@ cuadros.forEach((_, i) => {
     HeaderTopSvgWrapper.style.backgroundColor = mainBackground;
     HeaderBottomUl.style.backgroundColor = mainBackground;
 
-    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('mousemove', handleMouseMove); // Remueve el listener
   });
 });
 
-
+// En este apartado se utilizará el IntersectionObserver aprendido durante las clases, para añadir una clase cuando los elementos aparecen.
 const GridLi = document.querySelectorAll('.Grid-li');
 let options = { threshold: 0.5 };
 
@@ -115,6 +126,7 @@ const handleIntersection = (entries) => {
 let observer = new IntersectionObserver(handleIntersection, options);
 
 GridLi.forEach(cuadro => observer.observe(cuadro));
+// En este apartado se utilizará de nuevo el IntersectionObserver de la misma forma.
 
 const GalleryLi = document.querySelectorAll('.Gallery-li');
 console.log(GalleryLi);
@@ -129,16 +141,16 @@ const handleGalleryIntersection = (entries) => {
 let galleryObserver = new IntersectionObserver(handleGalleryIntersection, galleryOptions);
 
 GalleryLi.forEach(li => galleryObserver.observe(li));
-
+// Al hacer hover sobre una imagen, todas las otras imagenes tendran un brillo del 40%.
+// La imagen sobre la que se hace hover se le añadirá la clase GalleryImgIsActive y tendrá un brillo del 100%
 const GalleryImg = document.querySelectorAll('.Gallery-img');
-
 const handleMouseEnter = (i) => {
   GalleryImg.forEach(img => img.style.filter = 'brightness(40%)');
   GalleryImg[i].classList.add('GalleryImgIsActive');
   GalleryImg[i].style.filter = 'brightness(100%)';
 };
-
-const handleMouseLeave = (i) => {
+// Se vuelve a la normalidad al hacer un mouseleave
+const handleMouseLeave = (i) => { 
   GalleryImg.forEach(img => img.style.filter = 'brightness(100%)');
   GalleryImg[i].classList.remove('GalleryImgIsActive');
 };
@@ -150,7 +162,10 @@ GalleryImg.forEach((img, i) => {
 
 
 const Button = document.querySelectorAll('.Button');
-
+// En este caso tuve ciertos problemas con forEach, ya que hay varios botones, y cada boton tenia 2 span a los que se aplicaba una clase.
+// Tuve que pedir ayuda a Chatgpt para la Selección secundaria.
+// Otro aspecto en el que chatgpt me ha ayudado ha sido para quitar paréntesis y llaves, deconstruir los parámetros, o utilizar funciones Handler, es decir, crear funciones nombradas para separar el listener de la funcion.
+ 
 const botonMouseEnter = (button, buttonBackground, buttonSpans) => {
   buttonBackground?.classList.add('buttonBackgroundIsActive');
   buttonSpans.forEach(span => span.classList.add('buttonSpanIsActive'));
@@ -168,7 +183,7 @@ Button.forEach(button => {
   button.addEventListener('mouseenter', () => botonMouseEnter(button, buttonBackground, buttonSpans));
   button.addEventListener('mouseleave', () => botonMouseLeave(button, buttonBackground, buttonSpans));
 });
-
+// Cuando se produce un evento mouseenter se añaden clases, si se produce un mouseleave, se quita.
 const contactCuadros = document.querySelectorAll('.Contact-cuadro');
 const contactCuadroPrimero = document.querySelector('.Contact-cuadro--Primero');
 

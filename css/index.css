@@ -383,7 +383,7 @@ Estructura:
   top: calc(50% - (552px / 2));
   right: calc(50% - (920px / 2));
 }
-@media (max-width: 1000px){
+@media (max-width: 1000px){ /* Los Hero-cuadro no son visibles si no se hace scroll. Solo se verá el primero, que ocupara toda la pantalla. */
   .Hero-cuadro{
     display: none;
   }
@@ -398,7 +398,7 @@ Estructura:
     width: 100%;
   }
 
-  .Hero-cuadro-limiter{
+  .Hero-cuadro-limiter{ /* Para pantalas pequeñas, es preferible que todos los elementos esten centrados */
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -543,7 +543,7 @@ Estructura:
 .About-me-p-wrapper .About-me-p{
   padding-bottom: 1rem;
 }
-@media (max-width: 1000px){
+@media (max-width: 1000px){ /* Para pantallas pequeñas, es mejor quitar elementos como el carrusel giratorio, el cual no funciona sin scroll */
 
 
   .Carrousel-wrap{
@@ -675,11 +675,8 @@ Estructura:
   width: 100%;
   padding-top: 4rem;
 }
-@media (max-width: 1000px){
-  .Grid{
-    width: 80%;
-   
-    max-width: 1000px;
+@media (max-width: 1000px){ /* Transformamos de display grid a flex column */
+  .Grid{ 
     display: flex;
     justify-content: center;
     align-items: start;
@@ -688,14 +685,12 @@ Estructura:
    
   
   }
-  .Grid-li{
+  .Grid-li{ /* En pantallas mas pequeñas solo quiero mostrar los textos, no svg o imagenes */
     display: none;
   }
   .Grid-li--Primero, .Grid-li--Tercero, .Grid-li--Quinto, .Grid-li--Sexto, .Grid-li--Noveno{
     display: flex;
-    font-family: "Orbitron", sans-serif;
     font-size: var(--fontsize-tittle-small);
-    color: var(--secondary-color);
     text-transform: none;
     font-weight: 400;
     width: 100%;
@@ -874,12 +869,13 @@ Estructura:
   .Gallery{
     margin: 0;
   }
-  .Gallery-img{
+  .Gallery-img{ /* Para pantallas mas pequeñas no interesa que esten en posicion absolute. Ocupara 100% de la contenedora */
     position: static;
-    width: 100%;
     height: inherit;
+    width: 100%;
+
   }
-  .Gallery-img-wrapper{
+  .Gallery-img-wrapper{ /* El contenedor se le dara display flex y direccion column */
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
@@ -887,18 +883,7 @@ Estructura:
     justify-content: start;
     gap: 16px;
   }
-  .Gallery-img--Tercera{
-    width: 100%;
-  }
-  .Gallery-img--Primera{
-    width: 100%;
   
-    
-  }
-  .Gallery-img--Segunda{
-    width:100%;
-  
-  }
 
  
 }
@@ -1087,7 +1072,7 @@ Estructura:
   left: calc(50% - (920px / 2));
 
 }
-@media (max-width: 1000px){
+@media (max-width: 1000px){ /* Quitamos los cuadros salvo el primero. */
   .Contact-cuadro{display: none;}
   .Contact-cuadro--Primero{
     display: flex;
@@ -1172,7 +1157,7 @@ Estructura:
   color: var(--secondary-color);
 
 }
-@media (max-width: 1000px){
+@media (max-width: 1000px){ /* Quitamos el ul con los enlaces y hacemos que el Info ocupe el 100% del contenedor */
   .Footer-nav{
     display: none;
   }
