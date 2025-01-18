@@ -1,3 +1,21 @@
+
+/* index.css
+-Reset
+-Variables
+-Header
+-Hero
+-About-me
+-Carrusel
+-Skills
+-Grid
+-Work
+-Gallery
+-Button
+-Contact
+-Footer
+-Info
+ */
+
 /* Reset / Normmalizador */
 *{
   margin:0;
@@ -29,13 +47,13 @@ svg{
 :root{
   font-size: 100%;
   scroll-behavior: smooth;
-  --main-color: #FFD700;
-  --secondary-color: #F6F6F6;
-  --main-bg-color: #121212;
-  --fontsize-tittle-big: clamp(4rem,  7.38vw, 6rem);
-  --fontsize-tittle-medium: clamp(1.5rem,  4vw, 3rem);
-  --fontsize-tittle-small: clamp(0.9rem,  2.5vw, 1.5rem);
-  --fontsize-p: 1rem;
+  --main-color: #FFD700; /* Color principal */
+  --secondary-color: #F6F6F6; /* Color secundario */
+  --main-bg-color: #121212; /* Color de fondo */
+  --fontsize-tittle-big: clamp(4rem,  7.38vw, 6rem); /* Tamaño de titulo */
+  --fontsize-tittle-medium: clamp(1.5rem,  4vw, 3rem);/* Tamaño de titulo */
+  --fontsize-tittle-small: clamp(.9rem,  2.5vw, 1.5rem);/* Tamaño de titulo */
+  --fontsize-p: 1rem; /* Tamaño de p */
 
 }
 body{
@@ -47,6 +65,11 @@ h1 , h2 , h3 , h4 , h5 , h6{
   font-size: inherit;
   font-weight: inherit;
 }
+/* Descripción: Estilo del Header
+Estructura: 
+- Header-top
+- Header-bottom
+*/
 .Header{
   width: 200px;
   height: 60px;
@@ -58,13 +81,10 @@ h1 , h2 , h3 , h4 , h5 , h6{
   z-index: 3;
   overflow: hidden;
   transition: height .5s ease;
-
-
-
   gap: 16px;
 }
 .HeaderIsVisible{
-  height: auto;
+  height: auto; /*Cuando se añade se adapta a la altura del header, el cual está a 60px */
 }
 
 .Header-top{
@@ -77,18 +97,22 @@ h1 , h2 , h3 , h4 , h5 , h6{
 }
 .Header-top-h1{
   width: 100%;
-}
-.Header-top-span--none{
-  display: none;
-}
-.Header-top-svg-wrapper{
+  position: relative;
+  overflow: hidden;
   width: 60px;
   height: 60px;
   background-color: var(--main-bg-color);
   border-radius: 60px;
 }
-.Header-top-svg-wrapper svg{
-  padding-left: 6px;
+.Header-top-span--none{
+  position: absolute; /* Como no quiero que se vea, pero tampoco quiero que sea display: none, he utilizado este metodo. */
+  left: 999px;
+  opacity: 0;
+  
+}
+
+.Header-top-svg{
+  padding-left: 6px; /* Como no se centraba completamente en el contenedor, se añadió un padding.*/
   padding-top: 5px;
 }
 .Header-bottom{
@@ -126,33 +150,38 @@ background-color: var(--secondary-color);
   color: var(--main-bg-color);
 }
 .Header-bottom-a:hover{
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0); /* Al hacer hover el fondo se vuelve transparente */
   color: var(--secondary-color);
 }
 .headerIsActive{
-  transform: translateX(0);
+  transform: translateX(0); /* El Header se muestra por completo  */
 
 }
-.Main{
-}
+/* Descripción: Estilo del Hero.
+Estructura: 
+- Hero-cuadros-wrapper
+- Hero-cuadro
+*/
+
 .Hero{
   position: relative;
   overflow: hidden;
+  width: 100%;
 
 }
 
-.Hero-cuadros-wrapper{
-  width: 100vw;
+.Hero-cuadros-wrapper{ /* Es el contenedor de todos los cuadros */
+  width: 100vw; 
   background-color: var(--main-bg-color);
   min-height: 100vh;
   position: relative;
-  top: 0;
+  top: 0; 
 
   
 }
 
 
-.Hero-cuadro{
+.Hero-cuadro{ /* Vamos a dar a todos los cuadros una posicion absoluta y centrarlos despues individualmente */
   background-color: rgba(0, 0, 255, 0);
   position: absolute;
   border: 1px solid #FFD700;
@@ -161,7 +190,7 @@ background-color: var(--secondary-color);
   
 
 }
-.Hero-cuadro-wrapper{
+.Hero-cuadro-wrapper{ /* Debido a ciertos problemas a la hora de activar los efectos con el codigo de javascript, tuve que crear un wrapper para Hero-cuadro--Primero */
   width: 100vw;
   min-height: 100vh;
   position: absolute;
@@ -173,7 +202,7 @@ background-color: var(--secondary-color);
   align-items: center;
 }
 
-.Hero-cuadro--Primero{
+.Hero-cuadro--Primero{ /* Damos el tamaño y la posicion. Hero-cuadro--Primero es especial, ya que contiene el contenido a mostrar en el hero. */
   transition: width 0.7s ease, transform 0.1s ease, height 0.7s ease;
   background-color: var(--main-color); 
   height: 100vh;
@@ -191,20 +220,21 @@ background-color: var(--secondary-color);
 }
 
 
-.Hero-cuadro-span--none{
-  display: none;
+.Hero-cuadro-span--none{ /* En este caso tampoco quería que se viera este span, pero como a diferencia del caso de Header-top-span--none,
+  he considerado que puedo utilizar este método, ya que al usar cualquier otro daba problemas */
+  display: none; 
 }
-.Hero-cuadro-limiter{
+.Hero-cuadro-limiter{ /* Coloco cada elemento del Hero-cuadro--Primero de forma indivual */
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   width: 80%;
 }
 
-.Hero-cuadro-limiter--Top{
+.Hero-cuadro-limiter--Top{/* Coloco cada elemento del Hero-cuadro--Primero de forma indivual */
   justify-content: start;
 }
-.Hero-cuadro-svg-wrapper{
+.Hero-cuadro-svg-wrapper{/* Coloco cada elemento del Hero-cuadro--Primero de forma indivual */
   width: 100%;
   
 }
@@ -212,14 +242,14 @@ background-color: var(--secondary-color);
   width: 200px;
   margin: auto;
 }
-.Hero-cuadro-limiter--Bottom{
+.Hero-cuadro-limiter--Bottom{/* Coloco cada elemento del Hero-cuadro--Primero de forma indivual */
   justify-content: end;
   padding: 0 1rem;
 }
 
 
 
-@keyframes fadeIn {
+@keyframes fadeIn { /* Animacion de las letras*/
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -236,7 +266,7 @@ background-color: var(--secondary-color);
   animation: fadeIn 0.5s ease-in-out forwards;
 }
 
-.Hero-cuadro-limiter span:nth-child(1) { animation-delay: 0.1s; }
+.Hero-cuadro-limiter span:nth-child(1) { animation-delay: 0.1s; }/* Delay de cada una de las letras*/
 .Hero-cuadro-limiter span:nth-child(2) { animation-delay: 0.2s; }
 .Hero-cuadro-limiter span:nth-child(3) { animation-delay: 0.3s; }
 .Hero-cuadro-limiter span:nth-child(4) { animation-delay: 0.4s; }
@@ -245,7 +275,7 @@ background-color: var(--secondary-color);
 .Hero-cuadro-limiter span:nth-child(7) { animation-delay: 0.7s; }
 .Hero-cuadro-limiter span:nth-child(8) { animation-delay: 0.8s; }
 
-.Hero-cuadro-svg-wrapper svg path{
+.Hero-cuadro-svg-wrapper svg path{ /*  Preparacion de la animacion del svg*/
   fill: transparent;
   stroke: var(--secondary-color);
   stroke-width: 1;
@@ -253,7 +283,7 @@ background-color: var(--secondary-color);
   stroke-dashoffset: 450;
   animation: svgAnimation 2.5s ease-in-out 1 forwards;
 }
-@keyframes svgAnimation{
+@keyframes svgAnimation{ /* Animacion de las letras*/
   0%{
     stroke-dashoffset: 450;
   }
@@ -265,7 +295,7 @@ background-color: var(--secondary-color);
     stroke-dashoffset: 0;
   }
 }
-.Hero-cuadro--Segundo{
+.Hero-cuadro--Segundo{ /* Damos el tamaño y la posicion de cada Hero-cuadro hasta Hero-cuadro--Duodecimo */
   transition: all .2s ease;
   width: 340px;
   min-height: calc(340px * 0.6);
@@ -388,24 +418,18 @@ background-color: var(--secondary-color);
   margin: 0;
 }
 
-.Hero-cuadro--Segundo{
-    transition: all .2s ease;
-    width: 340px;
-    min-height: calc(340px * 0.6);
-    top: calc(50% - ((340px * 0.6) / 2));
-    right: calc(50% - (340px / 2));
-  
-  
-  }
-  .Hero-cuadro--Duodecimo{
-    display: none;
-  }
-  .Hero-cuadro--Undecimo{
-   display: none;
-  }
+
+ 
  
 }
-.About-me{
+/* Descripción: Estilo del About me.
+Estructura: 
+- About-me-h3
+- About-me-p
+- Carrusel
+- About-me-p-wrapper
+*/
+.About-me{ 
   background-color: var(--main-bg-color);
   width: 100%;
   margin: auto;
@@ -432,7 +456,7 @@ background-color: var(--secondary-color);
   font-weight: 400;
 
 }
-.Carrousel-wrap{
+.Carrousel-wrap{ /* Contenedor del carrusel. Con el se limita la cantidad del carrusel que se muestra */
   width: 100%;
   height: 300px;
   display: flex;
@@ -443,15 +467,15 @@ background-color: var(--secondary-color);
   margin-top: 40px;
   
 }
-.Carrusel{
+.Carrusel{ /* Este es el estilo del carrusel. Se trata de un carrusel giratorio */
   width: 1200px;
   min-height: 1200px;
   position: relative;
-  transform-origin: center;
+  transform-origin: center; 
   transition: transform 1s ease;
 
 }
-.Carrusel-li{
+.Carrusel-li{ /* Vamos a colocar los contenedores en posicion absoluta y en forma de abanico, para que forme una rueda */
   width: 200px;
   height: 600px;
   position: absolute;
@@ -498,14 +522,14 @@ background-color: var(--secondary-color);
 .Carrusel-li--Decimo{
   transform: rotate(324deg);
 }
-.Carrusel-img-wrapper{
+.Carrusel-img-wrapper{ /* A parte de los contenedores Carrusel-li, he metido cada svg en un wrapper para mayor control */
   display: flex;
   flex-flow: row wrap;
   align-items: start;
   justify-content: center;
   width: 90%;
 }
-.Carrusel-svg-wrappers{
+.Carrusel-svg-wrappers{ /* Algunos de ellos, al tener tres svg, necesité añadir otra div mas, para poder controlarlo mejor. */
   width: 50%;
 }
 .About-me-p-wrapper{
@@ -535,7 +559,13 @@ background-color: var(--secondary-color);
     font-family: "Orbitron", sans-serif;
   }
 }
-
+/* Descripción: Estilo del Skills.
+Estructura: 
+- Skills-h3
+- Skills-p
+- Grid
+- Skills-button-wrapper
+*/
 .Skills{
   padding: 3rem 1rem;
   width: 100%;
@@ -560,7 +590,7 @@ background-color: var(--secondary-color);
   color: var(--secondary-color);
   padding-bottom: 40px;
 }
-.Grid{
+.Grid{ /* Creo un grid de 4 columnas. Los rows son automaticos, manteniendo una altura de 300px */
   width: 100%;
   max-width: 1000px;
   display: grid;
@@ -571,19 +601,20 @@ background-color: var(--secondary-color);
 
 }
 .Grid-li{
+  display: grid; /* Tuve que añadir diplay grid aqui porque el inspector me decía lo siguiente: "The display: list-item property prevents grid-column-end from having an effect." */
   border: 1px solid var(--main-color);
   background-color: var(--main-bg-color);
   overflow: hidden;
-  opacity: 0 ;
+  opacity: 0 ; /* Hacemos que no se vean por defecto */
   transform: translateX(-200px);
   transition: transform .5s ease, opacity .5s ease;
  
 }
 .gridIsVisible{
-  transform: translateX(0px);
+  transform: translateX(0px); /* Al añadir esta clase apareceran con un efecto */
   opacity: 1;
 }
-.Grid-li--Primero{
+.Grid-li--Primero{ /* Posicionaremos algunos de los elementos en el grid según correspondan y les ponemos una transition*/
   grid-column-start: 1;
   grid-column-end: 3;
 
@@ -593,9 +624,7 @@ background-color: var(--secondary-color);
 
 
 }
-.Grid-li--Segundo{
 
-}
 .Grid-li--Tercero{
   grid-row-start: 1;
   grid-column-start: 3;
@@ -629,9 +658,7 @@ background-color: var(--secondary-color);
 .Grid-li--Setimo{
   background-color: var(--main-color);
 }
-.Grid-li--Octavo{
 
-}
 .Grid-li--Noveno{
   grid-column: span 2;
   font-family: "Orbitron", sans-serif;
@@ -661,7 +688,9 @@ background-color: var(--secondary-color);
    
   
   }
-  .Grid-li{display: none;}
+  .Grid-li{
+    display: none;
+  }
   .Grid-li--Primero, .Grid-li--Tercero, .Grid-li--Quinto, .Grid-li--Sexto, .Grid-li--Noveno{
     display: flex;
     font-family: "Orbitron", sans-serif;
@@ -670,10 +699,16 @@ background-color: var(--secondary-color);
     text-transform: none;
     font-weight: 400;
     width: 100%;
-    padding: 0.5rem;
+    padding: .5rem;
 
   }
 }
+/* Descripción: Estilo del Work.
+Estructura: 
+- Work-h3
+- Gallery
+- Button
+*/
 .Work{
   padding: 3rem 0;
   width: 100%;
@@ -698,7 +733,7 @@ background-color: var(--secondary-color);
   justify-content: start;
 
 }
-.Gallery{
+.Gallery{ /* Aqui la galeria es un ul con un simple flex con dirección column */
   width: 80%;
   display: flex;
   flex-flow: column nowrap;
@@ -708,15 +743,15 @@ background-color: var(--secondary-color);
   padding: 3rem 0;
 
 }
-.Gallery-li{
+.Gallery-li{ /* Cada li tiene a su vez display flex con la misma dirección*/
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: start;
   align-items: center;
   gap: 3rem;
-  opacity: 0 ;
-  transform: translateY(200px) scale(0.5) ;
+  opacity: 0 ; /* Hacemos que no se vea */
+  transform: translateY(200px) scale(0.5);  /* Preparación para el efecto de Javascript */
   transition: transform .5s ease, opacity .5s ease;
   color: var(--secondary-color);
 
@@ -724,7 +759,7 @@ background-color: var(--secondary-color);
 }
 .galleryIsVisible{
   opacity: 1 ;
-  transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1); /* Al añadir la clase aparece con una animación */
 }
 
 .Gallery-p{
@@ -733,14 +768,14 @@ background-color: var(--secondary-color);
 
 }
 
-.Gallery-img-wrapper{
+.Gallery-img-wrapper{ /* Cada Gallery-li tiene un contenedor de las imagnenes  */
   width: 100%;
   position: relative;
   min-height: 600px;
 
 
 }
-.Gallery-img{
+.Gallery-img{ /* Le vamos a dar posicion absoluta y colocar cada una individualmente */
   position: absolute;
   transition: transform 0.6s ease;
 }
@@ -766,15 +801,15 @@ background-color: var(--secondary-color);
   left: calc(50% - 300px);
 
 }
-.Gallery-li:nth-of-type(3) .Gallery-img--Primera {
+.Gallery-li:nth-of-type(3) .Gallery-img--Primera { /* He considerado mejor ajustar la altura de una de las imagenes en concreto*/
   height: 500px;
 }
-.GalleryImgIsActive{
+.GalleryImgIsActive{ /* Clase para cuando se haga hover. Cuando se añada se hace grande. */
   transform: scale(1.3);
   z-index: 1;
-  box-shadow: 0rem 0rem 0.3rem 0.1rem var(--main-color);
+  box-shadow: 0rem 0rem .3rem .1rem var(--main-color);
 }
-.Button{
+.Button{ /* Aqui se establece el estilo del enlace. Este estilo se aplicará al enlace que hay en la sección Skills y Contact */
   width: 350px;
   height:200px;
   display: flex;
@@ -784,7 +819,7 @@ background-color: var(--secondary-color);
   position: relative;
   overflow: hidden;
   border: 1px solid var(--main-color);
-  background: repeating-linear-gradient(
+  background: repeating-linear-gradient( /* Para poder destacar más el enlace, se le da un patrón con líneas blancas */
   45deg,
   #F6F6F6,
   #121212 5px,
@@ -792,7 +827,7 @@ background-color: var(--secondary-color);
   #121212 60px
 );
 }
-.Button-background{
+.Button-background{ /* Este es el fondo que aparecerá al hacer hover con Javascript */
   width: 350px;
   height: 200px;
   background-color: var(--main-color);
@@ -808,7 +843,7 @@ background-color: var(--secondary-color);
 
 }
 
-.Button-div{
+.Button-div{ /* Es el contenedor de los span. Actua com limitador, mostrando solo uno de los span */
   width: 100%;
   height: 1.9rem;
   display: flex;
@@ -819,7 +854,7 @@ background-color: var(--secondary-color);
  
 
 }
-.Button-span{
+.Button-span{ /* Es el contenido, al activarse la funcion en javascript, se mueven hacia arriva */
   width: 100%;
   height: 50px;
   text-align: center;
@@ -832,7 +867,7 @@ background-color: var(--secondary-color);
 .buttonSpanIsActive{
   transform: translateY(0);
 }
-.Button-span:nth-child(2){
+.Button-span:nth-child(2){ /* Es el que se muestra al activarse la funcion */
   color: var(--secondary-color);
 }
 @media (max-width: 1000px){
@@ -867,6 +902,13 @@ background-color: var(--secondary-color);
 
  
 }
+/* Descripción: Estilo del Contact.
+Estructura: 
+- Contact-h3
+- Contact-p
+- Contact-cuadro
+*/
+
 .Contact{
   padding: 3rem 1rem;
   width: 100%;
@@ -891,7 +933,7 @@ background-color: var(--secondary-color);
   max-width: 1000px;
   text-align: center;
 }
-.Contact-cuadros-wrapper{
+.Contact-cuadros-wrapper{ /* Container de los cuadros */
   width: 100%;
   min-height: 800px;
   position: relative;
@@ -899,16 +941,16 @@ background-color: var(--secondary-color);
   overflow: hidden;
 
 }
-.Contact-cuadro{
+.Contact-cuadro{ /* De la misma manera que los cuadros del Hero, se les da posicion absolute y se posicionan individualmente. 
+  Se les podría haber dado las mismas clases que las del Hero, y así evitar repetirlo, pero como entonces sería afectado por las funciones de Javascript, y quería usar otras transition en css, decidí no hacerlo por falta de tiempo.  */
 
   position: absolute;
   border: 1px solid var(--secondary-color);
-  
 
 }
-.contactCuadroIsActive{
+.contactCuadroIsActive{/* Al añadirse a los cuadros, se hacen grandesy cambian de color*/
   transform: scale(2);
-  border: 1px solid var(--main-color);
+  border: 1px solid var(--main-color); 
 
 }
 .Contact-cuadro--Primero{
@@ -1054,7 +1096,15 @@ background-color: var(--secondary-color);
     min-height: 250px;
   }
 }
-.Footer{
+
+/* Descripción: Estilo del Footer.
+Estructura: 
+- Footer-main-wrapper
+- Info
+- Footer-nav
+- Footer-rights
+*/
+.Footer{ /* Un simple Footer*/
   max-width: 1300px;
   margin: auto;
 
