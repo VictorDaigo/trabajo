@@ -682,8 +682,7 @@ Estructura:
     justify-content: center;
     align-items: start;
     flex-flow: column nowrap;
-    gap: 16px;
-   
+    gap: 16px;   
   
   }
   .Grid-li{ /* En pantallas mas pequeñas solo quiero mostrar los textos, no svg o imagenes */
@@ -697,6 +696,11 @@ Estructura:
     width: 100%;
     padding: .5rem;
 
+  }
+}
+@media (max-width: 600px){ /* En el caso de moviles, en algunos casos el Grid da problemas, por lo que vamos a quitarlo*/
+  .Skills{
+    display: none;
   }
 }
 /* Descripción: Estilo del Work.
