@@ -28,9 +28,9 @@ const HeaderLogoYellowSVG = `<svg class="Header-top-svg" width="110" height="133
 </svg>`
 //Funcionamiento un tanto similar que la seccion de Hero de la página de Inicio.
 //En el momento que se hace scroll, es decir, que deltaY > 0, scrollCounter++ y se quita TitleH2IsVisible al span. Dicho clase mantenía a todas las span en un el centro de la ventana, por lo que cada uno regresa a su posicion original.
-// Cuando scrollCounter >= 1, la funcion de la Slide de la Muestra se activará, moviendose por cada scroll. Como al activarse la funcion, scrollCounter ya estaba en 1, habría que restarle 1 para contrarestarlo.
+// Cuando scrollCounter >= 1, la funcion de la Slide de la Muestra se activará, moviendose por cada scroll. Como al activarse la funcion, scrollCounter ya estaba en 1, habría que restarle 1 para contrarestarlo. He decidido reducir la cantidad de movimiento por scroll a la mitad multiplicando por 0.5 el scrollCounter.
 // Una vez se haya hecho scroll 6 veces, se quitará MainIsFixed, el cual mantenía el Main en posicion Fixed, y el Header cambiará de la misma forma que en el Hero.
-// La única ayuda que he recibido de chatgpt en esta página de Work ha sido en la optimización, para quitar paréntesis y llaves, deconstruir los parámetros, o utilizar funciones Handler, es decir, crear funciones nombradas para separar el listener de la funcion.
+// La única ayuda que he recibido de chatgpt en esta página de Work ha sido en la optimización: quitar paréntesis y llaves, deconstruir los parámetros, o utilizar funciones Handler, es decir, crear funciones nombradas para separar el listener de la función.
 
 let scrollCounter = 0;
 
@@ -49,14 +49,14 @@ const handleWheelScroll = ({ deltaY }) => {
   console.log(scrollCounter);
 
   if (scrollCounter >= 1) {
-    Muestra.style.transform = `translateX(-${33.333 * (scrollCounter - 1)}%)`;
+    Muestra.style.transform = `translateX(-${33.333 * ((scrollCounter - 1) * 0.5)}%)`;
   }
 
   updateMainAndHeader(scrollCounter);
 };
 
 const updateMainAndHeader = (counter) => {
-  if (counter >= 6) {
+  if (counter >= 9) {
     Main.classList.remove('MainIsFixed');
     HeaderTopSvgWrapper.innerHTML = HeaderLogoYellowSVG;
     HeaderTopSvgWrapper.style.backgroundColor = secondColor;

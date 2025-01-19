@@ -76,7 +76,7 @@ Estructura:
   display: flex;
   flex-flow: column nowrap;
   position: fixed;
-  top: 0;
+  top: 10px;
   right: 0;
   z-index: 3;
   overflow: hidden;
@@ -190,7 +190,8 @@ Estructura:
   
 
 }
-.Hero-cuadro-wrapper{ /* Debido a ciertos problemas a la hora de activar los efectos con el codigo de javascript, tuve que crear un wrapper para Hero-cuadro--Primero */
+.Hero-cuadro-wrapper{ /* Debido a ciertos problemas a la hora de activar los efectos con el codigo de javascript, tuve que crear un wrapper para Hero-cuadro--Primero. 
+  Este wrapper mantiene el Hero-cuadro--Primero en el centro durante la transición de Javascript*/
   width: 100vw;
   min-height: 100vh;
   position: absolute;
