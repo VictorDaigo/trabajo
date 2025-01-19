@@ -276,6 +276,7 @@ Estructura:
 .Hero-cuadro-limiter span:nth-child(7) { animation-delay: 0.7s; }
 .Hero-cuadro-limiter span:nth-child(8) { animation-delay: 0.8s; }
 
+
 .Hero-cuadro-svg-wrapper svg path{ /*  Preparacion de la animacion del svg*/
   fill: transparent;
   stroke: var(--secondary-color);
@@ -441,7 +442,7 @@ Estructura:
   flex-flow: column nowrap;
   align-items: center;
   justify-content: start;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
 }
 .About-me-h3{
   font-family: "Orbitron", sans-serif;
@@ -568,7 +569,7 @@ Estructura:
 - Skills-button-wrapper
 */
 .Skills{
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   width: 100%;
   background-color: var(--main-bg-color);
   max-width: 1300px;
@@ -710,7 +711,7 @@ Estructura:
 - Button
 */
 .Work{
-  padding: 3rem 0;
+  padding: 4rem 0;
   width: 100%;
   max-width: 1300px;
   margin: auto;
@@ -900,7 +901,7 @@ Estructura:
 */
 
 .Contact{
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   width: 100%;
   max-width: 1300px;
   margin: auto;

@@ -360,7 +360,7 @@ Estructura:
 .Works{
   width: 100%;
   min-height: 800px;
-  margin-top: 6rem;
+  margin-top: 8rem;
 }
 .Works-ul{
   width: 100%;
@@ -376,7 +376,7 @@ Estructura:
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
 
 }
 .Wordpress-h3{
@@ -481,7 +481,7 @@ transition: transform 1s ease, opacity 1s ease;
   flex-flow: column nowrap;
   justify-content: start;
   align-items: center;
-  padding: 3rem 1rem;
+  padding: 8rem 1rem 4rem 1rem;
 
 
 }
@@ -550,7 +550,7 @@ transition: transform 1s ease, opacity 1s ease;
   flex-flow: column nowrap;
   justify-content: start;
   align-items: center;
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
 }
 .Photoshop-h3{
   font-family: "Orbitron", sans-serif;
@@ -686,7 +686,7 @@ Estructura:
 */
 
 .Contact{
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   width: 100%;
   max-width: 1300px;
   margin: auto;
